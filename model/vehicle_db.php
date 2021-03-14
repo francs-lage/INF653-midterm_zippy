@@ -1,10 +1,9 @@
 <?php 
 
-function get_All_Vehicles(){
+function get_all_vehicles(){
     global $database;
-    $query = 'SELECT vehicles.ID, vehicles.year, vehicles.model, vehicles.price, 
-                    types.type, classes.class, makes.make 
-            FROM vehicles       
+    $query = 'SELECT vehicles.year, vehicles.model, vehicles.price, types.type, classes.class, makes.make
+            FROM vehicles 
             LEFT JOIN types ON types.type_id = vehicles.type_id
             LEFT JOIN classes ON classes.class_id = vehicles.class_id
             LEFT JOIN makes ON makes.make_id = vehicles.make_id
@@ -12,7 +11,7 @@ function get_All_Vehicles(){
 
     $statement = $database->prepare($query);
     $statement->execute();
-    $vehicles = $statement->fetchAll();
+    $all_vehicles = $statement->fetchAll();
     $statement->closeCursor();
-    return $vehicles;
+    return ($all_vehicles);
 }
