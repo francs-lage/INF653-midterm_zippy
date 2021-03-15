@@ -1,9 +1,10 @@
 <?php
-    $dataSourceName = 'mysql:host=localhost;dbname=zippyusedautos';
-    $user = 'root';
+    $dataSourceName = 'mysql:host=pxukqohrckdfo4ty.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306; dbname=m9hrdx7mawh6mtur';
+    $username = 'jf60ce86hzd5yrp5';
+    $password = 'mpafrjoxiz9i7l7u';
 
     try {
-        $database = new PDO($dataSourceName, $user);
+        $database = new PDO($dataSourceName, $username, $password);
     }
     catch (PDOException $e) {
         $error_message = 'Database Error: ';
