@@ -9,3 +9,4 @@ function get_all_classes(){
     $all_classes = $statement->fetchAll();
     $statement->closeCursor();
     return ($all_classes);
+}

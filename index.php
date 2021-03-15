@@ -18,11 +18,8 @@
         case 'list_all_vehicles':
             $all_makes = get_all_makes();
             $all_types = get_all_types();
-            echo $all_types;
-            $all_classes = get_all_classes();
-            
+            $all_classes = get_all_classes();    
             $all_vehicles = get_all_vehicles();
-
             include ('view/vehicle_list.php');
             break;
         default:

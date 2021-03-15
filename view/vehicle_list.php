@@ -40,8 +40,6 @@
     <input type="submit">
 </form>
 
-
-
 <!-- THIS DISPLAYS THE LIST  -->
 <section id="VehiclesListTable">
     <table style="width:100%">
