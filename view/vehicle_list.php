@@ -1,4 +1,4 @@
-<?php include('view/header.php'); ?>
+<?php include('header.php'); ?>
 
 <section id="VehiclesListTable">
     <table style="width:100%">
@@ -25,4 +25,4 @@
     </table>
 </section>
 
-<?php include('view/footer.php'); ?>
+<?php include('footer.php'); ?>
