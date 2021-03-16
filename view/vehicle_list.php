@@ -1,43 +1,40 @@
 <?php include('header.php'); ?>
 
-<!-- THIS DISPLAYS THE 3 DROP MENUS AND RADIO OPTIONS FOR PRICE/YEAR - ONE SUBMIT BUTTON FOR ALL-->
-<form action="." method="get">
-    <input type="hidden" name="action" value="list_all_vehicles"> <!-- MUDAR ESTE VALOR!!!!!!!! -->
-    <select  name="make_id" required>
-            <option value="make">View All Makes</option>
-            <?php foreach ($all_makes as $make){ ?> 
-                <?php if ($make_id == $make['make_id']) { ?>
-                            <option value="<?=$make['make_id'] ?>" selected>
-                <?php }else { ?>
-                            <option value="<?=$make['make_id'] ?>">
-                <?php } ?> <?= $make['make'] ?> </option> <?php
-            } ?>
+<!-- THIS FORM DISPLAYS DROP MENUS, RADIO BUTTONS PRICE/YEAR AND SUBMIT BUTTON -->
+<form action="." method="GET">
+    <input type="hidden" name="action" value="list_vehicles"> <!-- MUDAR ESTE VALOR!!!!!!!! -->
+    <!-- DROP MENU TO SELECT AN SPECIFIC MAKER -->
+    <select id="selectMakes" name="selectMake">
+        <option value="0">View All Makes</option>
+        <?php foreach ($all_makes as $make){ ?>
+            <option value="<?=$make['make_id'] ?>"> <?php echo $make['make']; ?> </option> <?php 
+            # Obs: Value carries the parameter forward and echo prints on the menu 
+        } ?>
     </select>
-
-    <select  name="type_id" required>
-            <option value="type">View All Types</option>
-            <?php foreach ($all_types as $type){ ?> 
-                <?php if ($type_id == $type['type_id']) { ?>
-                            <option value="<?=$type['type_id'] ?>" selected>
-                <?php }else { ?>
-                            <option value="<?=$type['type_id'] ?>">
-                <?php } ?> <?= $type['type'] ?> </option> <?php
-
-            } ?>
+    <!-- DROP MENU TO SELECT AN SPECIFIC TYPE -->
+    <select id="selectTypes" name="selectType">
+        <option value="0">View All Types</option>
+        <?php foreach ($all_types as $type){ ?>
+            <option value="<?=$type['type_id'] ?>"> <?php echo $type['type']; ?> </option> <?php 
+        } ?>
     </select>
-
-    <select  name="class_id" required>
-            <option value="class">View All Classes</option>
-            <?php foreach ($all_classes as $class){ ?> 
-                <?php if ($class_id == $class['class_id']) { ?>
-                            <option value="<?=$class['class_id'] ?>" selected>
-                <?php }else { ?>
-                            <option value="<?=$class['class_id'] ?>">
-                <?php } ?> <?= $class['class'] ?> </option> <?php
-
-            } ?>
+    <!-- DROP MENU TO SELECT AN SPECIFIC CLASS -->
+    <select id="selectClasses" name="selectClass">
+        <option value="0">View All Classes</option>
+        <?php foreach ($all_classes as $class){ ?>
+            <option value="<?=$class['class_id'] ?>"> <?php echo $class['class']; ?> </option> <?php 
+        } ?>
     </select>
-    <input type="submit">
+    <br>
+    <br>
+    <!-- RADIO BUTTONS FOR PRICE OR YEAR -->
+    <label>Sort By:</label>
+    <input type="radio" id="price" name="sortby" value="price">
+    <label for="price">Price</label>
+    <input type="radio" id="year" name="sortby" value="year">
+    <label for="year">Year</label>
+
+    <button id="submitButton">Submit</button>
 </form>
 
 <!-- THIS DISPLAYS THE LIST  -->
@@ -51,8 +48,8 @@
             <th>Class  </th>
             <th>Price  </th>
         </tr>
-        <?php if ($all_vehicles){
-            foreach ($all_vehicles as $vehicle){ ?>
+        <?php if ($vehicles){
+            foreach ($vehicles as $vehicle){ ?>
                 <tr>
                     <td> <?=$vehicle['year']; ?> </td>
                     <td> <?=$vehicle['make'];  ?> </td>
